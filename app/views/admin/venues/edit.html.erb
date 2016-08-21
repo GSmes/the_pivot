@@ -1,0 +1,26 @@
+<div class="page-content">
+  <h1>Edit Venue</h1>
+  <div class="well col-md-7 col-md-offset-2">
+    <%= form_for(@venue, url: admin_venue_path(@venue)) do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :state %>
+        <%= f.text_field :state, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :capacity %>
+        <%= f.number_field :capacity, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update Venue", class: 'form-control btn btn-default' %>
+      </div>
+    <% end %>
+  </div>
+</div>

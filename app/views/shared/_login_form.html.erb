@@ -2,22 +2,20 @@
   <%= form_for(target, url: path) do |f|  %>
   <p>
     <%= f.label :username %>
-    <%= f.text_field :username, class: 'entry' %>
+    <%= f.text_field :username %>
   </p>
-  <%  %>
-  <% if new_user_path? || admin_edit? %>
+  <% unless login_path? %>
   <p>
     <%= f.label :email %>
-    <%= f.text_field :email, class: 'entry' %>
+    <%= f.text_field :email %>
   </p>
   <% end %>
   <p>
     <%= f.label :password %>
-    <%= f.password_field :password, class: 'entry' %>
+    <%= f.password_field :password %>
   </p>
-
   <center>
     <%= f.submit button, class: "center_button btn btn-#{btn_class}"%>
   </center>
-  <% end %>  
+  <% end %>
 </div>

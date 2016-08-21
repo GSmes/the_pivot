@@ -4,36 +4,43 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Item</th>
-          <th>Description</th>
+          <th></th>
+          <th>Event Name</th>
+          <th>Category</th>
+          <th>Venue</th>
+          <th>Date</th>
           <th>Quantity</th>
           <th>Unit Price</th>
           <th>Subtotal</th>
-          <th> </th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <% @items.each do |item| %>
-          <tr id="item-<%= item.id %>">
+        <% @events.each do |event| %>
+          <tr id="event-<%= event.id %>">
             <td>
-              <%= item.title %>
-              <%= image_tag item.image_path, class: "cart-pic" %>
+              <%= image_tag event.venue.image_path, class: "cart-pic img-circle" %>
             </td>
-            <td><%= item.description %></td>
             <td>
-              <%= form_for(item, url: cart_item_path(item)) do |f| %>
+              <%= event.title %>
+            </td>
+            <td><%= event.category.title %></td>
+            <td><%= event.venue.name %></td>
+            <td><%= event.event_date %></td>
+            <td>
+              <%= form_for(event, url: cart_event_path(event)) do |f| %>
                 <div class='form-group'>
-                  <%= f.select :quantity, quantities, {}, { value: item.quantity, class: 'form-control', onchange: 'this.form.submit();' } %>
+                  <%= f.select :quantity, quantities, {}, { value: event.quantity, class: 'form-control', onchange: 'this.form.submit();' } %>
                 </div>
               <% end %>
             </td>
-            <td><%= number_to_currency(item.price) %></td>
-            <td><%= number_to_currency(item.sub_total) %></td>
-            <td><%= button_to "Remove", cart_item_path(item), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+            <td><%= number_to_currency(event.price) %></td>
+            <td><%= number_to_currency(event.sub_total) %></td>
+            <td><%= button_to "Remove", cart_event_path(event), method: :delete, class: 'btn btn-danger btn-sm' %></td>
           </tr>
         <% end %>
         <tr>
-          <td colspan='6' class='text-right'>
+          <td colspan='9' class='text-right'>
             <strong>Total: <%= number_to_currency(@cart.total_cost) %></strong>
           </td>
         </tr>
@@ -41,7 +48,7 @@
     </table>
   </div>
   <div class='col-md-12'>
-    <%= link_to 'Back to All Items', items_path, class: 'col-md-2 btn btn-default' %>
+    <%= link_to 'Back to All Events', events_path, class: 'col-md-2 btn btn-default' %>
     <% unless @cart.contents.empty? %>
       <% if current_user %>
         <%= link_to 'Checkout', orders_path, method: :post, class: 'col-md-2 col-md-offset-8 btn btn-primary' %>

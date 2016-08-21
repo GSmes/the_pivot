@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.feature "Visitor sees appropriate information" do
   scenario "views their cart" do
-    item = create(:item)
+    event = create(:event)
 
-    visit items_path
+    visit events_path
 
-    within ("#item-#{item.id}") do
+    within ("#event-#{event.id}") do
       click_on "Add to Cart"
     end
 
@@ -25,10 +25,12 @@ RSpec.feature "Visitor sees appropriate information" do
 
     visit cart_index_path
 
-    within("#item-#{item.id}") do
-      expect(page).to have_content(item.title)
-      expect(page).to have_content(item.description)
-      expect(page).to have_content(item.price)
+    within("#event-#{event.id}") do
+      expect(page).to have_content(event.title)
+      expect(page).to have_content(event.venue.name)
+      expect(page).to have_content(event.category.title)
+      expect(page).to have_content(event.event_date)
+      expect(page).to have_content(event.price)
     end
 
     expect(page).to have_link("Checkout")

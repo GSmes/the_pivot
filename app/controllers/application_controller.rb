@@ -19,10 +19,18 @@ class ApplicationController < ActionController::Base
   end
 
   def current_admin?
-    current_user && current_user.admin?
+    current_user && !current_user.customer?
   end
 
   def categories
     @categories = Category.all
   end
+
+  # def default_url_options
+  #   if Rails.env.production?
+  #     { host: 'nosebleed-tix.herokuapp.com'}
+  #   else
+  #     {}
+  #   end
+  # end
 end

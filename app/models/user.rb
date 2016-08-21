@@ -2,14 +2,10 @@ class User < ApplicationRecord
   has_secure_password
   has_many :orders
   validates :username, presence: true, uniqueness: true, if: "uid.nil?", on: :create
-  validates :email, presence: true, uniqueness: true, if: "uid.nil?", on: :create
+  validates :email, presence: true, if: "uid.nil?", on: :create
   validates :email, email: { strict_mode: true }, if: "uid.nil?", on: :create
-  validates :state, length: { is: 2 }
-  validates :zip_code, length: { is: 5 }
 
-  enum role: %w(default admin)
-
-  after_create :send_welcome_email
+  enum role: %w(customer venue_admin platform_admin)
 
   def date_registered
     created_at.strftime("%m/%d/%Y")
@@ -22,9 +18,5 @@ class User < ApplicationRecord
       new_user.oauth_token     = auth_info.credentials.token
       new_user.password_digest = auth_info.credentials.secret
     end
-  end
-
-  def send_welcome_email
-    UserNotifierMailer.send_signup_email(self).deliver if self.email
   end
 end

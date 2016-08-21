@@ -1,11 +1,10 @@
 class CategoriesController < ApplicationController
-
   def show
     @category = Category.find_by(slug: params[:title])
     if @category.nil?
-      redirect_to items_path
+      render file: '/public/404', status => 404, :layout => true
     else
-      @items = @category.items.where(status: 0)
+      @events = @category.events.where(status: 0)
     end
   end
 end

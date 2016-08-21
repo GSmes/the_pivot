@@ -1,9 +1,0 @@
-<div class="page-content">
-  <h1>All Items</h1>
-  <%= render partial: "filter" %>
-  <% if current_admin? %>
-    <%= link_to 'Add New Treasure', new_admin_item_path, class: 'btn btn-lg btn-danger pull-right' %>
-  <% end %>
-
-  <%= render partial: 'shared/item_list', locals: { btn_label: 'Add to Cart', btn_class: 'default', status: false} %>
-</div>

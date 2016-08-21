@@ -1,0 +1,31 @@
+<div class="well col-md-7 col-md-offset-2">
+  <%= form_for(@event, url: path, html: {multipart: true}) do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :supporting_act, "Supporting Act" %>
+      <%= f.text_field :supporting_act, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.number_field :price, min: 0, step: 0.01, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category_id %>
+      <%= f.select :category_id, event_categories, {}, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :venue_id %>
+      <%= f.select :venue_id, event_venues, {}, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :upload_image, 'Image' %>
+      <%= f.file_field :upload_image, class: 'center_button' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "#{button}", class: 'form-control btn btn-default' %>
+    </div>
+  <% end %>
+</div>

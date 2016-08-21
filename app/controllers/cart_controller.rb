@@ -1,5 +1,5 @@
 class CartController < ApplicationController
   def index
-    @items = @cart.all_items
+    @events = @cart.all_events
   end
 end

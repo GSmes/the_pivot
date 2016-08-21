@@ -6,61 +6,34 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-.navbar {
-    background-color: rgba(255, 255, 255, 0.77);
+#topnavbar {
+    background-color: rgba(255, 255, 255, 0.80);
     border: none;
-    position: fixed;
-    width: 100%;
-}
-
-.navbar-fixed-left {
-  width: 130px;
-  position: fixed;
-  border-radius: 0;
-  height: 100%;
-  padding-top: 50px;
-  padding-left: 0px;
-}
-
-.navbar-default {
-  min-height: 80px;
-  max-height: 80px;
-}
-
-.navbar-default > ul {
- margin: 30px 0 0;
-}
-
-.user-info {
-  float: none;
-  position: fixed;
-  padding-left: 87%;
-  padding-top: 10px;
-}
-
-.navbar-fixed-left .navbar-nav > li {
-  float: none;
-  width: 130px;
+    min-height: 70px;
 }
 
 .logo {
-  width: 30%;
-}
-
-#categories {
-  padding-left: 8%;
-}
-
-.category:hover {
-  width: 100%;
-  background: #eeeeee;
-  text-decoration: none;
+  height: 225%;
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: rgb(38, 60, 71);
+  color: rgb(38, 60, 71);
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: rgb(59, 142, 174);
+  color: rgb(59, 142, 174);
+}
+
+#collapsingnav {
+  padding-top: 25px;
+}
+
+.navbar-toggle {
+  padding-top: 25px;
+}
+
+.collapsing {
+  -webkit-transition: height .01s ease;
+       -o-transition: height .01s ease;
+          transition: height .01s ease;
 }

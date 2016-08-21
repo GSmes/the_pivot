@@ -1,0 +1,45 @@
+<div class="event-show">
+  <div class="well col-md-10 padded">
+    <h1><%= @venue.name %></h1>
+    <%= image_tag(@venue.image_path, alt: "#{@venue.name} pic", class: 'venue-image') %>
+    <div>
+      <p>
+        <strong>Location:</strong> <%= @venue.location %>
+      </p>
+      <p>
+        <strong>Capacity:</strong> <%= @venue.capacity %>
+      </p>
+    </div>
+      <div class="table-responsive col-md-8 fit-width">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Purchase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @venue.events.each do |event| %>
+              <tr id="event-<%= event.id %>">
+                <td><%= event.title %></td>
+                <td><%= event.category.title %></td>
+                <td><%= event.event_date %></td>
+                <td><%= number_to_currency(event.price) %></td>
+                <td>
+                  <%= content_tag :div do %>
+                    <%= button_to "Add to Cart", cart_events_path(event_id: event.id), class: "center_button btn btn-sm btn-primary" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+
+
+  </div>
+</div>

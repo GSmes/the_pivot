@@ -5,12 +5,12 @@ class Cart
     @contents = contents || {}
   end
 
-  def add_item(item_id)
-    @contents[item_id.to_s] ||= 0
-    @contents[item_id.to_s] += 1
+  def add_event(event_id)
+    @contents[event_id.to_s] ||= 0
+    @contents[event_id.to_s] += 1
   end
 
-  def total_items
+  def total_tickets
     contents.values.sum
   end
 
@@ -18,23 +18,23 @@ class Cart
     if contents.empty?
       0.00
     elsif contents.values.max < 2
-      Item.find(contents.keys).pluck(:price).sum
+      Event.find(contents.keys).pluck(:price).sum
     else
       process_sum
     end
   end
 
-  def all_items
-    contents.map do |item_id, quantity|
-      CartItem.new(item_id, quantity)
+  def all_events
+    contents.map do |event_id, quantity|
+      CartEvent.new(event_id, quantity)
     end
   end
 
   private
 
   def process_sum
-    all_items.reduce(0) do |initial, item|
-      initial += item.sub_total
+    all_events.reduce(0) do |initial, event|
+      initial += event.sub_total
     end
   end
 

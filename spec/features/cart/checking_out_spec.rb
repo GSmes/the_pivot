@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature "Checking out" do
-  scenario "an existing user with items in cart visits their cart" do
+  scenario "an existing user with events in cart visits their cart" do
     user = create(:user)
-    item = create(:item)
+    event = create(:event)
 
-    visit items_path(item)
+    visit events_path(event)
 
-    within("#item-#{item.id}") do
+    within("#event-#{event.id}") do
       click_on "Add to Cart"
     end
 
@@ -27,7 +27,7 @@ RSpec.feature "Checking out" do
     expect(current_path).to eq(orders_path)
     expect(page).to have_content("Order was successfully placed")
     within("#order-#{Order.first.id}") do
-      expect(page).to have_content(item.price)
+      expect(page).to have_content(event.price)
     end
   end
 end

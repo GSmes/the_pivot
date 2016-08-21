@@ -1,6 +1,5 @@
 <div class="page-content">
-
-<h1>Profile for <%= current_user.username %></h1>
+  <h1>Profile for <%= current_user.username %></h1>
   <div class="well table-responsive col-md-6">
     <table class="table">
       <tr>
@@ -16,8 +15,9 @@
         <td><%= current_user.orders.count %></td>
       </tr>
     </table>
-  <div class='col-md-12'>
-    <%= link_to 'View My Orders', orders_path, class: 'btn btn-default pull-right' %>
-  </div>
+    <div class='col-md-12'>
+      <%= link_to 'View My Orders', orders_path, class: 'btn btn-default pull-right' %>
+      <%= link_to 'Manage Account', edit_user_path(current_user), class: 'btn btn-default pull-right' %>
+    </div>
   </div>
 </div>

@@ -10,7 +10,8 @@
             </td>
           <tr>
             <th>Date Placed</th>
-            <th>Items Ordered</th>
+            <th>Number of Events</th>
+            <th>Total Tickets</th>
             <th>Total</th>
             <th>Status</th>
           </tr>
@@ -18,12 +19,13 @@
         <tbody>
           <tr>
             <td><%= order.date %></td>
-            <td><%= order.total_items %></td>
+            <td><%= order.total_events %></td>
+            <td><%= order.total_tickets %></td>
             <td><%= number_to_currency(order.total) %></td>
             <td><%= order.status %></td>
           </tr>
           <td colspan="5" class="text-right">
-            <strong><%= link_to "Order Details", order_path(order), class:'btn btn-primary' %></strong>
+            <p><strong><%= link_to "Order Details", order_path(order), class:'btn btn-primary' %></strong></p>
             <% if order.ordered? %>
               <%= form_tag charges_path do %>
                 <%= hidden_field_tag :orderid, order.id %>

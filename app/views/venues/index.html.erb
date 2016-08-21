@@ -1,0 +1,21 @@
+<div class="page-content">
+  <h1>Venues</h1>
+  <% @venues.each do |venue| %>
+    <div class='event' data-all="<%= venue.name %> <%= venue.city %> <%= venue.state %>">
+      <div class ="well col-md-3 event-in-list" id="venue-<%= venue.id %>">
+        <p>
+          <%= image_tag(venue.image_path, alt: "#{venue.name} pic", class: 'img-thumbnail event-image') %>
+        </p>
+        <p>
+          <strong>Venue:</strong> <%= venue.name %>
+        </p>
+        <p>
+          <strong>Location:</strong> <%= venue.location %>
+        </p>
+        <%= content_tag :div do %>
+          <%= link_to "View Venue", venue_path(venue), class: "center_button btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

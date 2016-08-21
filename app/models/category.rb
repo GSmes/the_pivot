@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-  has_many :items
-  has_many :celebrities, through: :items
+  has_many :events
+  has_many :venues, through: :events
   validates :title, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
   before_validation :create_slug

@@ -1,18 +1,24 @@
 FactoryGirl.define do
-  factory :item do
+  factory :event do
     title
-    description "Definitely used by this celebrity at least once"
+    supporting_act "Norm Macdonald"
     price 199.99
     image_path
     category
-    celebrity
-    factory :sold_out_item do
+    venue
+    date "2014-09-18 12:30:59 -0700"
+    factory :sold_out_event do
       status 1
     end
   end
 
-  factory :celebrity do
+  factory :venue do
     name
+    image_path
+    city 'Denver'
+    state 'CO'
+    capacity 500
+    admin
   end
 
   factory :category do
@@ -21,19 +27,13 @@ FactoryGirl.define do
 
   factory :order do
     user
-    items { create_list(:item, 2) }
+    events { create_list(:event, 2) }
   end
 
   factory :user do
     username
     email
     password 'password'
-    first_name 'Joe'
-    last_name 'Smith'
-    address '123 Anywhere St.'
-    city 'AnyTown'
-    state 'CA'
-    zip_code 99999
 
     factory :admin do
       role 1
@@ -49,7 +49,7 @@ FactoryGirl.define do
   end
 
   sequence :name do |n|
-    "Celebrity_#{n}"
+    "Venue_#{n}"
   end
 
   sequence :category_title do |n|
@@ -57,7 +57,7 @@ FactoryGirl.define do
   end
 
   sequence :title do |n|
-    "Item_#{n}"
+    "Event_#{n}"
   end
 
   sequence :image_path do |n|

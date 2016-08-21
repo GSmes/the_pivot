@@ -1,0 +1,24 @@
+<div class="event-show">
+  <div class="well col-md-10 padded">
+    <h1><%= @event.title %></h1>
+    <%= image_tag(@event.venue.image_path, alt: "#{@event.title} pic", class: 'img-thumbnail show-image', style: 'float:left') %>
+    <div class="event-content">
+      <h2><p><strong>Venue:</strong> <%= @event.venue_name %></h2></p>
+      <h4><p><strong>Category:</strong> <%= @event.category.title %></p></h4>
+      <h4><p><strong>Featuring:</strong> <%= @event.supporting_act %></p></h4>
+      <br />
+      <p><em>See the sights and hear the sounds at <%= @event.title %>, featuring <%= @event.supporting_act %>. Sure to be an unforgettable evening!</em></p>
+      <br />
+      <p><strong>Get your tickets for some truly believable seats now!</strong></p>
+      <h4><p><strong><%= number_to_currency(@event.price) %></strong></p></h4>
+      <% if @event.past_event? %>
+        <p><%= link_to 'SOLD OUT', cart_events_path(event_id: @event.id), class: 'center_button btn btn-danger', disabled: 'disabled' %></p>
+      <% else %>
+        <p><%= button_to 'Add to Cart', cart_events_path(event_id: @event.id), class: 'center_button btn btn-primary' %></p>
+        <% if current_admin? %>
+          <p><%= link_to 'Edit Event', edit_admin_event_path(@event), class: 'btn btn-default' %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

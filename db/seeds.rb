@@ -1,245 +1,280 @@
-health = Category.create(title: "Health & Beauty")
-kitchen = Category.create(title: "Kitchen")
-cleaning = Category.create(title: 'Cleaning')
-bathroom = Category.create(title: 'Bathroom')
-entertainment = Category.create(title: 'Entertainment')
-outdoors = Category.create(title: 'Outdoors')
+class Seed
+  def initialize
+    create_categories
+    create_nate_business_admin
+    create_venues
+    create_events
+    create_josh_customer
+    create_customers
+    create_orders
+  end
 
-jt = Celebrity.create(name: 'Justin Timberlake')
-jtt = Celebrity.create(name: 'Jonathan Taylor Thomas')
-attenborough = Celebrity.create(name: 'Sir David Attenborough')
-hulk = Celebrity.create(name: "Hulk Hogan")
-christopher = Celebrity.create(name: "Christopher Walken")
-gary = Celebrity.create(name: "Gary Busey")
-cyndi = Celebrity.create(name: "Cyndi Lauper")
-chris = Celebrity.create(name: "Chris Farley")
-flavor = Celebrity.create(name: "Flavor Flave")
-vin = Celebrity.create(name: "Vin Diesel")
-tom = Celebrity.create(name: "Tom Hanks")
-leo = Celebrity.create(name: "Leonardo Dicaprio")
-arnold = Celebrity.create(name: "Arnold Schwarzenegger")
-charlie = Celebrity.create(name: "Charlie Sheen")
-britney = Celebrity.create(name: "Britney Spears")
+  def create_categories
+    Category.create!(title: "Music")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Sports")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Theater")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Meet-Up")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Conference")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Art")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Lectures")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Film")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Comedy")
+    puts "Category #{Category.last.title} created."
+    Category.create!(title: "Carnival")
+    puts "Category #{Category.last.title} created."
+  end
 
-Item.create(
-  title: 'Broken Swiffer',
-  description: "When times are tough and you're cleaning your own home,\
-  it's easy to imagine the frustration that arises when your trusty \
-  Swiffer finally scrubs its last floor. But with great frustration \
-  comes great perspiration, and JTT's sweat on this one-of-a-kind item \
-  is what makes it truly special.",
-  price: 44.99,
-  image_path: 'http://i.imgur.com/ymvr4Qd.jpg',
-  category: cleaning,
-  celebrity: jtt
-)
+  def create_venues
+    Venue.create!(
+      name: 'Wrigley Field',
+      city: 'Chicago',
+      state: 'IL',
+      capacity: 41268,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Red Rocks Amphitheatre',
+      city: 'Morrison',
+      state: 'CO',
+      capacity: 9525,
+      image_path: 'http://i.imgur.com/JGQP86m.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Yankee Stadium',
+      city: 'Bronx',
+      state: 'NY',
+      capacity: 54251,
+      image_path: 'http://i.imgur.com/6kpS9z5.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Bellco Theatre',
+      city: 'Denver',
+      state: 'CO',
+      capacity: 5000,
+      image_path: 'http://i.imgur.com/SIccgUE.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Walt Disney Concert Hall',
+      city: 'Los Angeles',
+      state: 'CA',
+      capacity: 2265,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Carnegie Hall',
+      city: 'New York',
+      state: 'NY',
+      capacity: 2804,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Sydney Opera House',
+      city: 'Sydney',
+      state: 'NSW',
+      capacity: 6000,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Madison Square Garden',
+      city: 'New York',
+      state: 'NY',
+      capacity: 18200,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Pepsi Center',
+      city: 'Denver',
+      state: 'CO',
+      capacity: 18007,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Gorge Amphitheatre',
+      city: 'George',
+      state: 'WA',
+      capacity: 27500,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Museum of Modern Art',
+      city: 'San Francisco',
+      state: 'CA',
+      capacity: 5251,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'San Diego Convention Center',
+      city: 'San Diego',
+      state: 'CA',
+      capacity: 125000,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Beaver Stadium',
+      city: 'State College',
+      state: 'PA',
+      capacity: 107282,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'University of Phoenix Stadium',
+      city: 'Glendale',
+      state: 'AZ',
+      capacity: 63400,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Minnesota State Fairgrounds',
+      city: 'St. Paul',
+      state: 'MN',
+      capacity: 17000,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'PNC Park',
+      city: 'Pittsburgh',
+      state: 'PA',
+      capacity: 38362,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'AT&T Stadium',
+      city: 'Arlington',
+      state: 'TX',
+      capacity: 80000,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Rungrado 1st of May Stadium',
+      city: 'Pyongyang',
+      state: 'NK',
+      capacity: 150000,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Mall of Asia Concert Grounds',
+      city: 'Manila',
+      state: 'PI',
+      capacity: 80000,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+    Venue.create!(
+      name: 'Camp Nou',
+      city: 'Barcelona',
+      state: 'SP',
+      capacity: 99354,
+      image_path: 'http://i.imgur.com/NqWzxPB.jpg',
+      admin: User.find_by(username: 'nate@turing.io')
+      )
+      puts "Venue #{Venue.last.name} created."
+  end
 
-Item.create(
-  title: 'Half-full Throat Spray',
-  description: "You know him from every nature documentary ever \
-  produced, and now you can unlock the secret behind his buttery, \
-  informative voice with this partially-used bottle of throat coat \
-  spray. You won't quite be kissing Mr. Attenborough, but sharing \
-  this bottle will surely be enough to pique the interests of even \
-  your most staunch dinner guests.",
-  price: 109.99,
-  image_path: 'http://i.imgur.com/69bNRtH.jpg',
-  category: health,
-  celebrity: attenborough
-)
+  def create_events
+    Category.all.each do |category|
+      50.times do |i|
+        Event.create!(
+          title: "#{Faker::Book.title} #{Faker::Company.profession.capitalize}",
+          supporting_act: Faker::App.author,
+          price: Faker::Commerce.price,
+          image_path: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200",
+          category: category,
+          venue: Venue.offset(rand(Venue.count)).first,
+          date: Faker::Time.forward(90, :evening)
+        )
+        puts "#{category.title}: Event #{i + 1} created."
+      end
+    end
+  end
 
-Item.create(
-  title: 'Malfunctioning Bidet',
-  description: "Perhaps one of our greatest treasures: hit-maker, \
-  actor, and all-around world superstar Justin Timberlake's personal \
-  bidet. Although tempting, this particular item is not recommended \
-  for use, due to the malfunction of the pressure limiter of the spray \
-  nozzle. Buyer beware, this rare gem comes with a scare!",
-  price: 1099.99,
-  image_path: 'http://i.imgur.com/LeTdTmw.jpg',
-  category: bathroom,
-  celebrity: jt,
-  status: 1
-)
+  def create_josh_customer
+    User.create!(
+      username: "jmejia@turing.io",
+      email: "jmejia@turing.io",
+      password: "password"
+    )
+    puts "Customer Josh created."
+  end
 
-Item.create(
-  title: 'Justin Timberlake N*Sync Doll',
-  description: "Worlds have collided with this unique item. Owned by \
-  Sir David Attenborough, revealing both his good taste and a rare \
-  glimpse into his private taste in both music and style is this \
-  N*Sync era doll of Justin Timberlake. Originally equipped with a \
-  pull string that would deliver snippets of songs, this feature is \
-  no longer functioning due to overuse by Mr. Attenborough.",
-  price: 249.99,
-  image_path: 'http://i.imgur.com/bOZoSV8.jpg',
-  category: entertainment,
-  celebrity: attenborough
-)
+  def create_nate_business_admin
+    User.create!(
+      username: "nate@turing.io",
+      email: "nate@turing.io",
+      password: "password",
+      role: 1
+    )
+    puts "Business Admin Nate created."  end
 
-Item.create(
-  title: 'Glee Season 2 Soundtrack (CD)',
-  description: "Priced at a very special fifty-TWO dollars, this CD \
-  shows plenty of scratches from apparent regular use by superstar \
-  Justin Timberlake. Making this item extra special, the liner notes \
-  have all original song titles scratched out and replaced with the \
-  words 'Cry Me a River'.",
-  price: 52.00,
-  image_path: 'http://i.imgur.com/cLgVDRa.png',
-  category: entertainment,
-  celebrity: jt
-)
+  def create_customers
+    99.times do |i|
+      User.create!(
+        username: "#{Faker::Internet.user_name}_#{i}",
+        email: "#{i + 1}_#{Faker::Internet.safe_email}",
+        password: "password"
+      )
+      puts "Customer #{i + 1} created."
+    end
+  end
 
-Item.create(
-  title: "Quarter Full Bottle of Visine",
-  description: 'It’s no secret in Christopher Walken’s circle of friends that
-  he suffers from chronically dry eyes. He maintains a regular optical
-  prescription through his local Hollywood pharmacy, but was forced to use
-  this Visine when he was unable to locate his prescription drops while
-  filming Hot Island Breeze, a Bollywood romance that was never released
-  in the US. One Fan’s Treasure acquired this bottle when Christopher,
-  while on set, turned to one of our associates, handed him the bottle,
-  and said, “Take this. It’s like God sent down an angel, to kiss my
-  eyeballs. Wow.”',
-  price: 3499.99,
-  category: health,
-  celebrity: christopher,
-  image_path: "http://i.imgur.com/be4TQVU.jpg",
-  status: 1
-)
+  def create_orders
+    User.all.each do |user|
+      10.times do |i|
+        order = user.orders.create!
+        events = Event.offset(i).limit(rand(1..10))
+        order.events << events
+        events.each do |event|
+          order_item = OrderEvent.find_by(order: order, event: event)
+          order_item.update(quantity: rand(1..10))
+        end
+        puts "#{user.username}: Order #{i + 1} created."
+      end
+    end
+  end
+end
 
-Item.create(
-  title: "Toothbrush",
-  description: 'Barely used! This was acquired from Gary’s housecleaner who said,
-   “Mr. Busey likes soft bristle only. This is a medium to hard bristle toothbrush!”',
-  price: 200.01,
-  category: health,
-  celebrity: gary,
-  image_path: "http://i.imgur.com/s4Z1p1G.jpg"
-)
-
-Item.create(
-  title: "Bedazzled Toothbrush",
-  description: 'Upon arrival at the Riviera Hotel & Casino in Las Vegas where Flavor Flave
-  was negotiation another location for his House of Flavor restaurant specializing in fried chicken,
-  Flavor Flave realized his assistant forgot to pack his custom microfiber-coated boar bristle grill polishing
-  toothbrush. One of our associates was on staff at the Riviera at the time and provided this very toothbrush
-  to Flave, who used it for one day until his custom toothbrush could be overnighted to him. Flavor Flave left this
-  beauty on his bathroom counter, and now it can grace yours!',
-  price: 299.99,
-  category: health,
-  celebrity: flavor,
-  image_path: "http://i.imgur.com/zVIJ8wJ.png"
-)
-
-Item.create(
-  title: "Nearly Panned Blue Eyeshadow",
-  description: 'Straight from the set of the 1983 hit music video Girls Wanna
-  Have Fun, this eyeshadow graced the lids of this 80’s pop legend time after time.',
-  price: 80.05,
-  category: health,
-  celebrity: cyndi,
-  image_path: "http://i.imgur.com/LGbPdhk.jpg"
-)
-
-Item.create(
-  title: "1800w Microwave",
-  description: 'Acquired through an estate sale after his passing, this
-  microwave was used by Chris to heat up many of the snacks that fueled his
-  larger than life comedic genius. It only runs for 20 seconds at a time,
-  ensuring that you’ll never over-microwave your hot pockets.',
-  price: 199.99,
-  category: kitchen,
-  celebrity: chris,
-  image_path: "http://i.imgur.com/Ea13XQf.jpg"
-)
-
-Item.create(
-  title: "Almost New Bottle of Baby Oil",
-  description: "Only enough of the oil was used to grease up the Hulkster
-  right before he entered the arena for WrestleMania 20. Once slathered, the
-  Hulk discarded the bottle outside the WrestleMania entranceway where it was
-  scooped up by a security guard who made sure it found its way to One Fan's Treasure!",
-  price: 350.21,
-  category: health,
-  celebrity: hulk,
-  image_path: "http://i.imgur.com/7Muqvq2.jpg"
-)
-
-Item.create(
-  title: "Willson (volleyball)",
-  description: "This is the companion that we all watched and wanted during
-  the emotional tale portrayed in Cast Away. The opportunity to gain a friend
-  and piece of history is now!",
-  price: 760.09,
-  category: entertainment,
-  celebrity: tom,
-  image_path: "http://i.imgur.com/XDSCwr4.jpg"
-)
-
-Item.create(
-  title: "Dull Straight Razor",
-  description: "You may have thought it was all natural, but Vin was maintaining
-  his unique look with this timeless tool for years! He has upgraded to an ever-sharp
-  platinum coated razor, but now you can upgrade your collection of celebrity treasures
-  at a bargain price!",
-  price: 35.75,
-  category: bathroom,
-  celebrity: vin,
-  image_path: "http://i.imgur.com/LT9Jeka.jpg"
-)
-
-Item.create(
-  title: "Oscar Award",
-  description: 'One would have to wonder how long Leo has been wanting an Oscar
-  of his own. In 2016, his goal was achieved, and he immediately donated his Oscar
-  to us. Why? We asked, too! Leo told us, "After wanting it for so long, it is
-  just weighing me down. Recycling just seems like the right thing to do, you
-  know?" We sure do!',
-  price: 15259.99,
-  category: entertainment,
-  celebrity: leo,
-  image_path: "http://i.imgur.com/ET3lR7u.jpg"
-)
-
-Item.create(
-  title: "Blender",
-  description: "This slightly used blender was used by none other than Arnold
-  Schwarzenegger on his redemption tour in the realm of bodybuilding. You can
-  also gain and win with this product.",
-  price: 250.01,
-  category: kitchen,
-  celebrity: arnold,
-  image_path: "http://i.imgur.com/r8TlVsW.jpg"
-)
-
-Item.create(
-  title: "Flask Containing Mystery Liquor",
-  description: 'This was a secretly prized possesion of Charlie Sheen until the
-  night he accidentally left it in the cab of a taxi in Slicklizzard, Alabama.
-  Because respect and honesty are at our core values, When we acquired the
-  flask, we attempted to reunite Mr. Sheen with his precious flash. He responded,
-  "Last night was a shameful train wreck filled with blind cuddly puppies. Boom,
-  crush. I never want to see that thing again. Winning, duh. Sheen out." The events
-  of that evening are still as much of a mystery to us as the liquid contained within
-  this flask. Now the mystery can be yours!',
-  price: 365.05,
-  category: entertainment,
-  celebrity: charlie,
-  image_path: "http://i.imgur.com/RIwQsL4.jpg",
-  status: 1
-)
-
-Item.create(
-  title: "Broken Green Umbrella",
-  description: "You may immediately recognize this iconic umbrella used by
-  Britney in 2007 to defend herself against a vicious paparrazi attack. In the
-  last few years, Britney has warmed up to being in the spotlight again and
-  offered us the umbrella as a means of shedding her difficult past. It can't
-  shield you from the rain, but it can shield you from the prying eyes of
-  the public if you use it as a weapon and make frantic, angry jabs at people.
-  Wield with responsibility.",
-  price: 313.13,
-  category: outdoors,
-  celebrity: britney,
-  image_path: "http://i.imgur.com/XOKy4oy.jpg"
-)
+Seed.new

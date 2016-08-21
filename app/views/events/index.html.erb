@@ -1,0 +1,9 @@
+<div class="page-content">
+  <h1>All Events</h1>
+  <%= render partial: "filter" %>
+  <% if current_admin? %>
+    <%= link_to 'Add New Event', new_admin_event_path, class: 'btn btn-lg btn-danger pull-right' %>
+  <% end %>
+
+  <%= render partial: 'shared/event_list', locals: { btn_label: 'Add to Cart', btn_class: 'primary btn-sm', status: false} %>
+</div>

@@ -90,6 +90,7 @@ GEM
       thor (~> 0.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    google-qr (0.2.2)
     hashie (3.4.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -190,6 +191,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -198,6 +203,8 @@ GEM
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+    rspec-pride (3.2.1)
+      rspec (~> 3.0)
     rspec-rails (3.5.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -265,6 +272,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  google-qr
   jbuilder (~> 2.5)
   jquery-rails
   launchy
@@ -275,6 +283,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails_12factor
+  rspec-pride
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers

@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'twitter-bootstrap-rails'
 gem 'faker'
 gem 'email_validator', require: 'email_validator/strict'
+gem 'google-qr'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -40,6 +41,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'rspec-pride'
 end
 
 group :development do

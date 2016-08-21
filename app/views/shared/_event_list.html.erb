@@ -1,0 +1,24 @@
+<div id="events_list">
+  <% @events.each do |event| %>
+    <div class='event' data-all="<%= event.title %> <%= event.venue_name %> <%= event.category.title %> <%= event.supporting_act %>">
+      <div class ="well col-md-3 event-in-list" id="event-<%= event.id %>">
+        <a id="popoverData" href="<%= event_path(event.venue, event) %>" data-content="<%= event.supporting_act %>" rel="popover" data-placement="bottom" data-original-title="Supporting Act" data-trigger="hover">
+          <%= event.title %>
+        </a>
+        <p>
+          <%= image_tag(event.image_path, alt: "#{event.title} pic", class: 'img-thumbnail event-image') %>
+        </p>
+        <p>
+          <strong>Venue:</strong> <%= event.venue_name %>
+        </p>
+        <p>
+          <%= number_to_currency(event.price) %>
+        </p>
+        <%= content_tag :div do %>
+          <%= button_to "#{btn_label}", cart_events_path(event_id: event.id), class: "center_button btn btn-#{btn_class}", disabled: status %>
+        <% end %>
+        <%= link_to "Edit", edit_admin_event_path(event), class: "center_button btn btn-default" if current_admin? %>
+      </div>
+    </div>
+  <% end %>
+</div>

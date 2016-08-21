@@ -8,6 +8,6 @@ RSpec.feature "User can view categories list" do
     click_on "Categories"
     click_on "Kitchen"
 
-    expect(current_path).to eq('/kitchen')
+    expect(current_path).to eq('/categories/kitchen')
   end
 end

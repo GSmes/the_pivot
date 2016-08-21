@@ -1,4 +1,28 @@
 <div class="page-content">
   <h1>Admin Dashboard</h1>
-  <%= link_to 'Edit My Profile', edit_user_path(current_user), class: 'btn btn-default' %>
+  <div class="well table-responsive col-md-6">
+    <table class="table">
+      <tr>
+        <th>Username</th>
+        <td><%= current_user.username %></td>
+      </tr>
+      <tr>
+        <th>E-mail</th>
+        <td><%= current_user.email %></td>
+      </tr>
+      <tr>
+        <th>Date Registered</th>
+        <td><%= current_user.date_registered %></td>
+      </tr>
+      <tr>
+        <th>Venue</th>
+        <td><%= @venue.name %></td>
+      </tr>
+    </table>
+    <div class='col-md-12'>
+      <%= link_to 'Manage My Account', edit_user_path(current_user), class: 'btn btn-default' %>
+      <%= link_to 'Manage Venue', edit_admin_venue_path(name: @venue.slug), class: 'btn btn-default' %>
+      <%= link_to 'View My Events', venue_path(name: @venue.slug), class: 'btn btn-default' %>
+    </div>
+  </div>
 </div>

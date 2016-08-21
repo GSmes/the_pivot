@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    save_order
+    order = save_order
+    send_order_confirmation(order)
     session[:cart] = nil
     flash[:success] = "Order was successfully placed"
     redirect_to orders_path
